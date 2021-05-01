@@ -1,8 +1,13 @@
 import random
 
 def main():
-    comp_guesses()
-    we_guess()
+    user_input = int(input("Please enter a number. \n 0. To quit. \n 1. The computer guesses your number \n 2. You guess the computers number \n"))
+    while user_input != 0:
+        if user_input == 1:
+            comp_guesses()
+        elif user_input == 2:
+            user_guesses()
+        user_input = int(input("Please enter a number. \n 0. To quit. \n 1. The computer guesses your number \n 2. You guess the computers number \n"))
 
 def comp_guesses():
     guess = 0
@@ -14,8 +19,9 @@ def comp_guesses():
         number_guesses += 1
     print(f'Your number was {guess}, it took {number_guesses} guesses')
 
-def we_guess():
+def user_guesses():
     secret_number = random.randint(1, 99)
+    number_guesses = 0
     print("I am thinking of a number between 1 and 99...")
     guess = int(input("Enter a guess: "))
     # True if guess is not equal to secret number
@@ -27,7 +33,8 @@ def we_guess():
             print("Your guess is too high")
         print("") # an empty line
         guess = int(input("Enter a new guess: "))
-    print("Congrats! The number was: " + str(secret_number))
+        number_guesses += 1
+    print(f'Congrats! The number was: {secret_number}, it took you {number_guesses} guesses')
 
 if __name__ == '__main__':
     main()
